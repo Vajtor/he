@@ -1,0 +1,26 @@
+#ifndef he_chunk_h
+#define he_chunk_h
+
+#include "value.h"
+#include "common.h"
+
+typedef enum {
+    OP_CONSTANT,
+    OP_RETURN,
+} Opcode;
+
+typedef struct {
+    int count;
+    int capacity;
+    ValueArray constants;
+    uint8_t* code;
+} Chunk;
+void initChunk(Chunk* chunk);
+void freeChunk(Chunk* chunk);
+void writeChunk(Chunk* chunk, uint8_t byte);
+int addConstant(Chunk*chunk, Value value);
+
+#endif
+
+
+ 
